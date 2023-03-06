@@ -1,0 +1,83 @@
+openapi: 3.0.3
+info:
+  title: Pokemon API
+  description: Pokemon API
+  version: 1.0.0
+servers:
+  - url: 'https://pokemon.api.dev/api'
+paths:
+  /pokemon:
+    post:
+      summary: Upload Pokemon via CSV
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllPokemon"
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    get:
+      summary: Show all Pokemon
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllPokemon"
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Pokemon:
+      type: object
+      required:
+        - id
+        - name
+        - weight
+        - height
+      properties:
+        id:
+          type: string
+          description: ID from the DB for the pokemon
+          example: 1234567890
+        name:
+          type: string
+          description: The name of the pokemon
+        weight:
+          type: integer
+          description: How much the pokemon weighs
+          example: 120
+        height:
+          type: integer
+          description: How tall is the pokemon
+          example: 800
+    AllPokemon:
+      type: array
+      items:
+        $ref: "#/components/schemas/Pokemon"
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          description: Error code
+          example: 100
+        message:
+          type: string
+          description: Error message
+          example: Unexpected error
+  
