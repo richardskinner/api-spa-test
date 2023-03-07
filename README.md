@@ -9,7 +9,9 @@ multiple components and building a basic Backend and Frontend that can communica
 
 ```bash
 docker exec -it api_srv bash
+cd /code
 composer install
+php artisan migrate
 ```
 
 #### VUE Application
@@ -30,3 +32,6 @@ Vue App runs on http://localhost:8081
 ## Improvements
 
 ### API
+
+* Give DB tasks to events
+* Send email when upload successful

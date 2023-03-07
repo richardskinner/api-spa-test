@@ -18,6 +18,3 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 RUN pecl install redis && docker-php-ext-enable redis
 RUN docker-php-ext-enable exif
-
-CMD bash -c "composer install && php artisan migrate"
-
