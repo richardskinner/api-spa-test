@@ -8,7 +8,8 @@ multiple components and building a basic Backend and Frontend that can communica
 #### PHP Application
 
 ```bash
-docker exec -it api_srv bash
+docker-compose up -d --build --force-recreate
+docker exec -it pokemon-test_php_1 bash
 cd /code
 composer install
 php artisan migrate

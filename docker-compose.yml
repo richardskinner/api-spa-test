@@ -56,7 +56,6 @@ services:
     networks:
       - pokemon-network
 
-
 networks:
   pokemon-network:
     driver: bridge
